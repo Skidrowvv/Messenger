@@ -27,11 +27,7 @@ export default class Login extends Component{
 
   render(){
     return (
-      <View>
-        <Profile/>
-      </View>
-      
-      /* <ImageBackground source={require('./img/Group_3.png')} style={styles.backgroundContainer}>
+<ImageBackground source={require('./img/Group_3.png')} style={styles.backgroundContainer}>
           
           <View style={styles.logoContainer}>
             <Image style={styles.logo} source={require('./img/logo2.png')} />
@@ -74,7 +70,7 @@ export default class Login extends Component{
           <TouchableOpacity style={styles.btnLogin}>
             <Text style={styles.text}>Login</Text>
           </TouchableOpacity>
-      </ImageBackground> */
+      </ImageBackground>
     );
   }
 }
@@ -142,4 +138,3 @@ const styles = StyleSheet.create({
     textAlign:'center',
   }
 });
-

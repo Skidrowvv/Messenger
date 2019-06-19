@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,TouchableOpacity,Dimensions, Text, View,ImageBackground,Image,TextInput} from 'react-native';
+import { StyleSheet,Switch,TouchableOpacity,Dimensions, Text, View,ImageBackground,Image,TextInput} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
@@ -57,6 +57,19 @@ const Profile = ()=>{
                 placeholderTextColo={'rgba(255,255,255,0.4)'}
                 underlineColorAndroid='transparent'/>
         </View>
+            <View>
+                <Text>
+                    Instagram
+                </Text>
+<Switch onValueChange = {'handlerHere'} value = {'Pre decided value if any'}/>
+            </View>
+
+            <View>
+                <Text>
+                    Instagram
+                </Text>
+<Switch onValueChange = {'handlerHere'} value = {'Pre decided value if any'}/>
+            </View>
                 </View>
         </View>
 
