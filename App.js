@@ -8,6 +8,22 @@ import Profile from './component/profile/profile'
 
 const {width:WIDTH} = Dimensions.get('window');
 
+myValidate = () =>{
+  const {username,password} = this.state;
+    if(username == '' && password == ''){
+      alert('Please fill username and password');
+    }else if(username != 'admin' && passowrd != 'admin'){
+      alert('Account not found');
+    }else if(username == 'admin' && passowrd == ''){
+      alert('Password Empty');
+    }else if(username == '' && passowrd != 'admin'){
+      alert('Username not found');
+    }else if(username == 'admin' && passowrd == 'admin'){
+      alert('Success');
+    }
+}
+
+
 export default class Login extends Component{
   constructor(){
     super()
