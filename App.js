@@ -4,17 +4,18 @@ import {Keyboard,Alert,StyleSheet,TouchableOpacity,Dimensions, Text, View,ImageB
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import Profile from './component/profile/profile';
-import Validate from './component/validate'
 
 const {width:WIDTH} = Dimensions.get('window');
+
+
 export default class Login extends Component{
   constructor(props){
     super(props)
     this.state ={
       showPass:true,
       press:false,
-      fname:'',
-      lname:''
+      username:'',
+      password:''
     }
   }
 
@@ -27,16 +28,16 @@ export default class Login extends Component{
   }
 
   myValidate = () =>{
-    const {fname,lname} = this.state;
-    if(fname == '' && lname == ''){
-        alert('Please fill fname and lname');
-    }else if(fname != 'admin' && lname != 'admin'){
+    const {username,password} = this.state;
+    if(username == '' && password == ''){
+        alert('Please fill Username and Password');
+    }else if(username != 'admin' && password != '123'){
         alert('Account not found');
-    }else if(fname == 'admin' && lname == ''){
+    }else if(username == 'admin' && password == ''){
         alert('Password Empty');
-    }else if(fname == '' && lname != 'admin'){
+    }else if(username == '' && password != '123'){
         alert('Username not found');
-    }else if(fname == 'admin' && lname == 'admin'){
+    }else if(username == 'admin' && password == '123'){
         alert('Success');
     }
     Keyboard.dismiss()
@@ -64,7 +65,7 @@ export default class Login extends Component{
               placeholderTextColo={'rgba(255,255,255,0.7)'}
               underlineColorAndroid='transparent'
               onChangeText={
-                lname=>this.setState({lname})
+                username=>this.setState({username})
             }
               />
           </View>
@@ -82,7 +83,7 @@ export default class Login extends Component{
               placeholderTextColo={'rgba(255,255,255,0.7)'}
               underlineColorAndroid='transparent'
               onChangeText={
-                fname=>this.setState({fname})
+                password=>this.setState({password})
             }
             />
   
