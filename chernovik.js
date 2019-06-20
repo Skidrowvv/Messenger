@@ -1,19 +1,12 @@
-import React,{Component} from 'react';
-import { createAppContainer, createStackNavigator,initialRouteName, StackActions, NavigationActions,createBottomTabNavigator  } from 'react-navigation';
-import { StyleSheet,TouchableOpacity,Dimensions, Text, View,ImageBackground,Image,TextInput} from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-
-import Profile from './component/profile/profile'
-
-
-const {width:WIDTH} = Dimensions.get('window');
 
 export default class Login extends Component{
-  constructor(){
-    super()
+  constructor(props){
+    super(props)
     this.state ={
       showPass:true,
-      press:false
+      press:false,
+      fname:'',
+      lname:''
     }
   }
 
@@ -25,8 +18,26 @@ export default class Login extends Component{
     }
   }
 
+  myValidate = () =>{
+    const {fname,lname} = this.state;
+    if(fname == '' && lname == ''){
+        alert('Please fill fname and lname');
+    }else if(fname != 'admin' && lname != 'admin'){
+        alert('Account not found');
+    }else if(fname == 'admin' && lname == ''){
+        alert('Password Empty');
+    }else if(fname == '' && lname != 'admin'){
+        alert('Username not found');
+    }else if(fname == 'admin' && lname == 'admin'){
+        alert('Success');
+    }
+    Keyboard.dismiss()
+}
+
+
   render(){
     return (
+      
 <ImageBackground source={require('./img/Group_3.png')} style={styles.backgroundContainer}>
           
           <View style={styles.logoContainer}>
@@ -44,7 +55,10 @@ export default class Login extends Component{
               placeholder={'Username'}
               placeholderTextColo={'rgba(255,255,255,0.7)'}
               underlineColorAndroid='transparent'
-            />
+              onChangeText={
+                lname=>this.setState({lname})
+            }
+              />
           </View>
   
           
@@ -59,17 +73,22 @@ export default class Login extends Component{
               secureTextEntry={this.state.showPass}
               placeholderTextColo={'rgba(255,255,255,0.7)'}
               underlineColorAndroid='transparent'
+              onChangeText={
+                fname=>this.setState({fname})
+            }
             />
   
-          <TouchableOpacity style={styles.btnEye}
-            onPress={this.showPass.bind(this)}>
-              <Icon name={this.state.press == false ? 'ios-eye' :'ios-eye-off'}  size={26} color={'rgba(255,255,255,0.7)'}/>
+          <TouchableOpacity style={styles.btnEye}>
+              <Icon onPress={this.showPass.bind(this)} name={this.state.press == false ? 'ios-eye' :'ios-eye-off'}  size={26} color={'rgba(255,255,255,0.7)'}/>
           </TouchableOpacity>
           </View>
   
-          <TouchableOpacity style={styles.btnLogin}>
-            <Text style={styles.text}>Login</Text>
-          </TouchableOpacity>
+          
+          <TouchableOpacity 
+                onPress={this.myFun}
+                style={{backgroundColor:'red',padding:10,width:150}}>
+                    <Text style={{color:'white',textAlign:'center',fontSize:20,fontWeight:'bold'}}>Submit</Text>
+                </TouchableOpacity>
       </ImageBackground>
     );
   }
@@ -141,20 +160,30 @@ const styles = StyleSheet.create({
 
 
 
+
 -------
 Simple Validit
 
 myValidate = () =>{
-  const {username,password} = this.state;
-    if(username == '' && password == ''){
-      alert('Please fill username and password');
-    }else if(username != 'admin' && passowrd != 'admin'){
+  const {fname,lname} = this.state;
+  if(fname == '' && lname == ''){
+      alert('Please fill fname and lname');
+  }else if(fname != 'admin' && lname != 'admin'){
       alert('Account not found');
-    }else if(username == 'admin' && passowrd == ''){
+  }else if(fname == 'admin' && lname == ''){
       alert('Password Empty');
-    }else if(username == '' && passowrd != 'admin'){
+  }else if(fname == '' && lname != 'admin'){
       alert('Username not found');
-    }else if(username == 'admin' && passowrd == 'admin'){
+  }else if(fname == 'admin' && lname == 'admin'){
       alert('Success');
-    }
+  }
+  Keyboard.dismiss()
 }
+
+
+
+----LOGIN
+
+<TouchableOpacity style={styles.btnLogin} onPress={this.myFun}>
+  <Text style={styles.text}>Login</Text>
+</TouchableOpacity>
